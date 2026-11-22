@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>RecordsCheck: lease-return records audit</title>
+<link rel="stylesheet" href="../shared/style.css">
+</head>
+<body>
+<header class="app-head">
+  <div class="logo">RC</div>
+  <div><h1>RecordsCheck</h1><div class="sub">Scanned logbooks → AD status, LLP back-to-birth trace and a redelivery punch list</div></div>
+  <div class="for">Built for: Airborne Capital (aircraft lessor / asset manager)</div>
+</header>
+<main>
+  <div class="problem"><b>Bottleneck:</b> at lease return, specialists read through stacks of paper and PDF records to prove every
+    airworthiness directive (AD) was complied with and every life-limited part has an unbroken history. Gaps delay redelivery and cut the aircraft's value.</div>
+  <div class="row">
+    <section class="panel"><h2>1 · Aircraft</h2>
+      <div class="form-grid">
+        <label>Type / MSN<input id="msn" value="A320-214 MSN 5123"></label>
+        <label>Current flight hours<input id="fh" type="number" value="41250"></label>
+        <label>Current flight cycles<input id="fc" type="number" value="22140"></label>
+        <label>Records as of<input id="asof" type="date" value="2026-11-22"></label>
+      </div>
+      <h2 style="margin-top:14px">Applicable ADs (from the regulator's AD list)</h2>
+      <pre class="out" id="adlist" style="max-height:170px"></pre></section>
+    <section class="panel"><h2>2 · OCR'd logbook and work-package text</h2>
+      <textarea id="recs" rows="16"></textarea>
+      <div style="margin-top:8px"><button id="run">Audit records</button></div></section>
+  </div>
+  <div class="kpis hidden" id="kpis"></div>
+  <div class="row hidden" id="res">
+    <section class="panel"><h2>3 · AD compliance</h2><table id="ads"></table></section>
+    <section class="panel"><h2>4 · Life-limited parts: back-to-birth trace</h2><table id="llp"></table></section>
+  </div>
+  <section class="panel hidden" id="punchbox"><h2>5 · Redelivery punch list</h2><pre class="out" id="punch"></pre></section>
+  <p class="note">AD numbers, part numbers and records are fictional sample data. Airworthiness decisions stay with certified staff; the tool assembles the evidence.</p>
+</main>
+<script src="../shared/demo.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

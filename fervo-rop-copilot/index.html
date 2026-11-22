@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ROP Copilot: real-time drilling parameter optimization</title>
+<link rel="stylesheet" href="../shared/style.css">
+<style>
+  .alert { border-radius: 10px; padding: 10px 14px; background: var(--bad-soft); color: var(--bad); font-weight: 600; }
+  .setpoint { font-size: 30px; font-weight: 700; font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body>
+<header class="app-head">
+  <div class="logo">RC</div>
+  <div><h1>ROP Copilot</h1><div class="sub">Learns this rock's response live and recommends WOB / RPM; watches MSE for bit damage</div></div>
+  <div class="for">Built for: Fervo Energy (enhanced geothermal)</div>
+</header>
+<main>
+  <div class="problem"><b>Bottleneck:</b> drilling is over 75% of Fervo's well cost, and in hard granite the cost is set by rate of penetration (ROP) and bit life.
+    Setpoints are usually picked by the driller and held, even as the rock changes underneath.</div>
+  <section class="panel" style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+    <button id="start">▶ Start drilling (driller setpoints)</button>
+    <button id="engage" class="ghost" disabled>Engage copilot</button>
+    <span class="muted" id="status">Simulated hard-rock section · 8.5" PDC bit · limits WOB 15–55 klbf, RPM 60–180</span>
+  </section>
+  <div class="kpis" id="kpis"></div>
+  <div class="row">
+    <section class="panel" style="grid-column: span 2"><h2>ROP (ft/hr) vs depth</h2><canvas id="rop" style="height:250px;width:100%"></canvas></section>
+    <section class="panel"><h2>Current recommendation</h2>
+      <div class="muted">WOB</div><div class="setpoint" id="wob">—</div>
+      <div class="muted" style="margin-top:6px">RPM</div><div class="setpoint" id="rpm">—</div>
+      <div class="note" id="why" style="margin-top:8px"></div></section>
+  </div>
+  <div class="row">
+    <section class="panel"><h2>Mechanical specific energy (bit efficiency)</h2><canvas id="mse" style="height:170px;width:100%"></canvas></section>
+    <section class="panel"><h2>Stick-slip index</h2><canvas id="ssi" style="height:170px;width:100%"></canvas></section>
+  </div>
+  <div id="alertbox" class="alert hidden"></div>
+  <p class="note">Physics-inspired simulation with synthetic rock. The copilot uses only what a rig sensor feed provides (WOB, RPM, torque, ROP) and learns online with recursive least squares.</p>
+</main>
+<script src="../shared/demo.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

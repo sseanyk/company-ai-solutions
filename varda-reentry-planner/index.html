@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ReentryOps: one plan that FAA, range and recovery all sign</title>
+<link rel="stylesheet" href="../shared/style.css">
+</head>
+<body>
+<header class="app-head">
+  <div class="logo">RO</div>
+  <div><h1>ReentryOps</h1><div class="sub">Find reentry windows that satisfy every stakeholder's constraints, then keep them in sync</div></div>
+  <div class="for">Built for: Varda Space Industries</div>
+</header>
+<main>
+  <div class="problem"><b>Bottleneck:</b> Varda's first capsule waited in orbit for about eight months. Landing needed the FAA reentry license,
+    the Air Force's Utah range, weather and the recovery team to line up on the same window, and each party ran its own process.</div>
+  <section class="panel">
+    <h2>1 · Constraints from each stakeholder (next 14 days)</h2>
+    <div class="form-grid">
+      <label>Max cross-range to UTTR target (km)<input id="xr" type="number" value="40"></label>
+      <label>Max surface wind (kt)<input id="wind" type="number" value="15"></label>
+      <label>Public risk limit Ec (Part 450)<input id="ec" value="1e-4"></label>
+      <label>Airspace / NOTAM lead time (h)<input id="lead" type="number" value="72"></label>
+      <label>Recovery crew: daylight landing only<select id="day"><option value="1">Yes</option><option value="0">No</option></select></label>
+    </div>
+    <div style="margin-top:10px;display:flex;gap:10px"><button id="plan">Find reentry windows</button>
+      <button class="ghost" id="deny" disabled>Simulate: range withdraws top window</button></div>
+  </section>
+  <div class="kpis hidden" id="kpis"></div>
+  <section class="panel hidden" id="tlbox"><h2>2 · Timeline: deorbit opportunities against each constraint</h2>
+    <canvas id="tl" style="height:230px;width:100%"></canvas>
+    <p class="note">Each tick is a deorbit opportunity. Green ones pass every constraint; grey ones fail at least one.</p></section>
+  <div class="row hidden" id="out">
+    <section class="panel"><h2>3 · Ranked windows</h2><table id="wins"></table></section>
+    <section class="panel"><h2>4 · Coordination packet, one source of truth</h2><pre class="out" id="pkt"></pre></section>
+  </div>
+  <p class="note">Orbit, weather, range and risk numbers are synthetic. A production version would pull TLE/ephemeris, NWS forecasts and the range scheduling system.</p>
+</main>
+<script src="../shared/demo.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

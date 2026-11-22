@@ -1,0 +1,8 @@
+# private: email drafts, contact tracker, attachments
+outreach/
+# local Claude Code settings
+.claude/
+# joined reel is over GitHub's 100 MB file limit
+videos/
+.DS_Store
+__pycache__/

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>IntakeIQ: battery receiving triage</title>
+<link rel="stylesheet" href="../shared/style.css">
+<style>
+  #feed tr { animation: fadein .3s ease both; }
+  .route-bar { display: grid; grid-template-columns: 170px 1fr 40px; gap: 8px; align-items: center; margin: 6px 0; font-size: 13px; }
+  .route-bar .track { background: #eef0f3; border-radius: 6px; height: 16px; overflow: hidden; }
+  .route-bar .fill { height: 100%; border-radius: 6px; transition: width .4s ease; }
+</style>
+</head>
+<body>
+<header class="app-head">
+  <div class="logo">IQ</div>
+  <div><h1>IntakeIQ</h1><div class="sub">Label photo + dock sensors → chemistry, hazard class and route, per item, at the dock</div></div>
+  <div class="for">Built for: Redwood Materials (battery recycling &amp; second life)</div>
+</header>
+<main>
+  <div class="problem"><b>Bottleneck:</b> incoming batteries vary wildly in size, chemistry and enclosure, from loose 18650s to whole EV packs.
+    Every item has to be identified, risk-assessed and routed (second-life test, discharge, recycle, reject) before it can move, and labels are often worn or missing.</div>
+  <section class="panel">
+    <h2>1 · Inbound truck manifest · 14 items scanned at receiving</h2>
+    <textarea id="manifest" rows="8"></textarea>
+    <div style="margin-top:8px;display:flex;gap:8px"><button id="run">Triage shipment</button></div>
+  </section>
+  <div class="kpis hidden" id="kpis"></div>
+  <div class="row hidden" id="out">
+    <section class="panel" style="grid-column: span 2"><h2>2 · Per-item decisions (with reasons)</h2><table id="feed"></table></section>
+    <section class="panel"><h2>3 · Routing mix</h2><div id="routes"></div><pre class="out" id="alerts" style="margin-top:12px"></pre></section>
+  </div>
+  <p class="note">Synthetic items. In production, label text comes from a vision model on the dock camera, and the rules are checked against an ML classifier trained on past receiving decisions.</p>
+</main>
+<script src="../shared/demo.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

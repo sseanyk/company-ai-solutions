@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>PermitPrecheck: ADU plan check before the city does it</title>
+<link rel="stylesheet" href="../shared/style.css">
+</head>
+<body>
+<header class="app-head">
+  <div class="logo">PP</div>
+  <div><h1>PermitPrecheck</h1><div class="sub">Check an ADU permit set against local rules and the California floors that override them</div></div>
+  <div class="for">Built for: Abodu (prefab backyard homes)</div>
+</header>
+<main>
+  <div class="problem"><b>Bottleneck:</b> Abodu's speed comes from pre-approval, which is city by city. Elsewhere, plan review can take 3–6 months
+    of correction cycles, and some cities apply rules state law doesn't allow. In Rancho Palos Verdes, the permit was denied unlawfully and the homeowners needed lawyers.</div>
+  <div class="row">
+    <section class="panel"><h2>1 · Project</h2>
+      <div class="form-grid">
+        <label>Jurisdiction<select id="city"></select></label>
+        <label>Abodu model<select id="model"><option value="studio">Abodu One (studio, 340 sq ft)</option><option value="2br" selected>Abodu Two (2BR, 800 sq ft)</option></select></label>
+        <label>ADU height (ft)<input id="height" type="number" step="0.5" value="17"></label>
+        <label>Side setback (ft)<input id="side" type="number" value="4"></label>
+        <label>Rear setback (ft)<input id="rear" type="number" value="5"></label>
+        <label>Walk to transit (mi)<input id="transit" type="number" step="0.1" value="0.4"></label>
+        <label>Lot slope (%)<input id="slope" type="number" value="18"></label>
+        <label>Primary home sprinklered?<select id="spr"><option value="no">No</option><option value="yes">Yes</option></select></label>
+      </div>
+      <h2 style="margin-top:12px">Sheets in the permit set</h2>
+      <div id="docs" style="display:flex;flex-wrap:wrap;gap:12px"></div>
+      <div style="margin-top:10px"><button id="run">Run plan check</button></div></section>
+    <section class="panel"><h2>Local rules on file for this city</h2><pre class="out" id="rules" style="max-height:330px"></pre></section>
+  </div>
+  <div class="kpis hidden" id="kpis"></div>
+  <section class="panel hidden" id="checkbox"><h2>2 · Rule-by-rule result</h2><table id="check"></table></section>
+  <div class="row hidden" id="outs">
+    <section class="panel"><h2>3 · Fix before submitting</h2><pre class="out" id="fix"></pre></section>
+    <section class="panel"><h2>4 · Cover letter: local rules state law overrides</h2><pre class="out" id="letter"></pre></section>
+  </div>
+  <p class="note">City rule sets are fictional. State floors are a simplified summary of California ADU law (Gov. Code §66314 et seq.) for illustration, not legal advice.</p>
+</main>
+<script src="../shared/demo.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

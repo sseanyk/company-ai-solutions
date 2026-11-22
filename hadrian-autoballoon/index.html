@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AutoBalloon: AS9102 first-article inspection in minutes</title>
+<link rel="stylesheet" href="../shared/style.css">
+<style>
+  #dwg { width: 100%; height: 400px; background: #fff; border: 1px solid var(--line); border-radius: 8px; }
+  #dwg text { font-family: var(--mono); font-size: 11px; fill: #16181d; }
+  #dwg .geo { stroke: #16181d; stroke-width: 1.6; fill: none; }
+  #dwg .dimline { stroke: #5a6270; stroke-width: .8; fill: none; }
+  #dwg .tb text { font-size: 10px; fill: #444; }
+  .balloon circle { fill: #fff; stroke: #2f6bff; stroke-width: 1.8; }
+  .balloon text { fill: #2f6bff !important; font-weight: 700; font-size: 11px !important; text-anchor: middle; }
+  .balloon.fail circle { stroke: #c62f2f; fill: #fde8e8; }
+  .balloon.fail text { fill: #c62f2f !important; }
+  .balloon { animation: fadein .35s ease both; }
+</style>
+</head>
+<body>
+<header class="app-head">
+  <div class="logo">AB</div>
+  <div><h1>AutoBalloon</h1><div class="sub">Drawing → numbered characteristics → CMM results → AS9102 Form 3</div></div>
+  <div class="for">Built for: Hadrian (aerospace &amp; defense machining)</div>
+</header>
+<main>
+  <div class="problem"><b>Bottleneck:</b> a first-article inspection report means hand-numbering every dimension on the drawing,
+    typing each into Form 3, then matching CMM results line by line. Suppliers have reported 40+ hours per part.</div>
+  <div class="row">
+    <section class="panel" style="grid-column: span 2">
+      <h2>1 · Customer drawing: HB-2207 Bracket, Rev C</h2>
+      <svg id="dwg" viewBox="0 0 900 400"></svg>
+      <div style="margin-top:8px;display:flex;gap:8px"><button id="balloon">Auto-balloon drawing</button></div>
+    </section>
+  </div>
+  <div class="row">
+    <section class="panel hidden" id="cmmbox"><h2>2 · CMM report (paste raw output)</h2>
+      <textarea id="cmm" rows="12"></textarea>
+      <div style="margin-top:8px"><button id="merge">Match results → Form 3</button></div></section>
+    <section class="panel hidden" id="charbox"><h2>Characteristics extracted</h2><table id="chars"></table></section>
+  </div>
+  <div class="kpis hidden" id="kpis"></div>
+  <section class="panel hidden" id="formbox"><h2>3 · AS9102 Form 3 (Characteristic Accountability)</h2><table id="form3"></table>
+    <div style="margin-top:8px;display:flex;gap:8px"><button class="ghost" id="dl">Export Form 3 CSV</button></div></section>
+  <section class="panel hidden" id="ncrbox"><h2>4 · Nonconformance draft</h2><pre class="out" id="ncr"></pre></section>
+  <p class="note">Synthetic drawing. A production version would read the customer's PDF drawing with a vision model; here the dimension text is read from the vector drawing.</p>
+</main>
+<script src="../shared/demo.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

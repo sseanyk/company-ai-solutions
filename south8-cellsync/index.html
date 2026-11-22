@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>CellSync: battery test data harmonizer</title>
+<link rel="stylesheet" href="../shared/style.css">
+</head>
+<body>
+<header class="app-head">
+  <div class="logo">CS</div>
+  <div><h1>CellSync</h1><div class="sub">Merge cycler exports from any brand, then flag and report automatically</div></div>
+  <div class="for">Built for: South 8 Technologies (battery R&amp;D)</div>
+</header>
+<main>
+  <div class="problem"><b>Bottleneck:</b> each cycler brand (Arbin, Maccor, Neware…) exports different columns, units and names.
+    Engineers stitch them together in spreadsheets, so analysis lags testing by weeks.</div>
+
+  <section class="panel" id="inputs">
+    <h2>1 · Raw exports (paste, edit, or load your own CSV)</h2>
+    <div class="row" id="files"></div>
+    <div style="margin-top:10px;display:flex;gap:10px;align-items:center">
+      <button id="run">Harmonize &amp; analyze</button>
+      <label style="display:flex;align-items:center;gap:8px">Add a file <input type="file" id="upload" accept=".csv,.txt,.tsv"></label>
+    </div>
+  </section>
+
+  <section class="panel hidden" id="mapping">
+    <h2>2 · Column mapping it worked out (no template needed)</h2>
+    <table id="maptable"></table>
+  </section>
+
+  <div class="kpis hidden" id="kpis"></div>
+
+  <section class="row hidden" id="results">
+    <div class="panel"><h2>3 · Capacity retention, all cells on one axis</h2><canvas id="chart" style="height:300px;width:100%"></canvas></div>
+    <div class="panel"><h2>4 · Anomalies</h2><table id="anoms"></table></div>
+  </section>
+
+  <section class="panel hidden" id="reportbox">
+    <h2>5 · Auto-generated test report</h2>
+    <pre class="out" id="report"></pre>
+    <div style="margin-top:8px;display:flex;gap:8px"><button class="ghost" id="dl">Download harmonized CSV</button></div>
+  </section>
+  <p class="note">Data shown is synthetic. The parser detects header synonyms and units, so it works on files it has never seen.</p>
+</main>
+<script src="../shared/demo.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

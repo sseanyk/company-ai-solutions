@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>LicenseGap: find NRC information gaps before the NRC does</title>
+<link rel="stylesheet" href="../shared/style.css">
+<style>
+  mark { background: #fff1c2; padding: 0 2px; border-radius: 3px; }
+  .req-row td:first-child { width: 34%; }
+  .ev { font-size: 12px; color: var(--muted); }
+</style>
+</head>
+<body>
+<header class="app-head">
+  <div class="logo">LG</div>
+  <div><h1>LicenseGap</h1><div class="sub">Pre-submission review: what would trigger an RAI, and draft text to close it</div></div>
+  <div class="for">Built for: Oklo (advanced fission)</div>
+</header>
+<main>
+  <div class="problem"><b>Bottleneck:</b> in January 2022 the NRC denied Oklo's Aurora application because it still had significant information gaps,
+    including the description of potential accidents and the classification of safety systems and components. The gaps survived several rounds of supplements.</div>
+  <div class="row">
+    <section class="panel"><h2>1 · Draft application (paste sections)</h2>
+      <textarea id="doc" rows="18"></textarea>
+      <div style="margin-top:8px"><button id="run">Review against NRC expectations</button></div></section>
+    <section class="panel hidden" id="sumbox"><h2>2 · Coverage by topic</h2><canvas id="bars" style="height:330px;width:100%"></canvas></section>
+  </div>
+  <div class="kpis hidden" id="kpis"></div>
+  <section class="panel hidden" id="matbox"><h2>3 · Requirement-by-requirement findings, with evidence</h2><table id="matrix"></table></section>
+  <section class="panel hidden" id="raibox"><h2>4 · Predicted RAIs and the content needed to close them</h2><pre class="out" id="rai"></pre></section>
+  <p class="note">Draft text is synthetic and not Oklo's. The checklist is a simplified illustration of what NRC reviewers expect, not legal or regulatory advice. A production version would use an LLM and retrieval over NRC guidance, prior RAIs and the SER record.</p>
+</main>
+<script src="../shared/demo.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
