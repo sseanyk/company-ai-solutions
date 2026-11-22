@@ -47,6 +47,8 @@ No install, no build step and no network. You only need a modern browser (Chrome
 open index.html
 ```
 
+Or download this tool on its own, with the shared files included: [**hadrian-autoballoon-code.zip**](https://github.com/sseanyk/company-ai-solutions/releases/download/v1.0/hadrian-autoballoon-code.zip). Unzip it and open `hadrian-autoballoon/index.html`.
+
 > [!TIP]
 > Add `?demo=1` to the URL to watch the scripted walkthrough instead of using the tool yourself:
 > `index.html?demo=1`

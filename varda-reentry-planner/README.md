@@ -47,6 +47,8 @@ No install, no build step and no network. You only need a modern browser (Chrome
 open index.html
 ```
 
+Or download this tool on its own, with the shared files included: [**varda-reentry-planner-code.zip**](https://github.com/sseanyk/company-ai-solutions/releases/download/v1.0/varda-reentry-planner-code.zip). Unzip it and open `varda-reentry-planner/index.html`.
+
 > [!TIP]
 > Add `?demo=1` to the URL to watch the scripted walkthrough instead of using the tool yourself:
 > `index.html?demo=1`
